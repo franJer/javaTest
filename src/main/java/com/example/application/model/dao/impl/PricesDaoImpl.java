@@ -9,10 +9,5 @@ import java.util.Optional;
 
 @Component
 public abstract class PricesDaoImpl implements PricesDao {
-    @Override
-    public Optional<Price> getPricesByProductDateGroup(String productId, String groupId, Date date) {
-        Price price  = new Price();
-        Optional<Price> opt = Optional.ofNullable(price);
-        return opt;
-    }
+
 }

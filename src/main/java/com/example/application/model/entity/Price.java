@@ -29,6 +29,11 @@ public class Price {
         this.id = id;
         this.brandId = brand;
     }
+    public Price withBrandId(String brandId){
+        this.brandId = brandId;
+        return this;
+    }
+
 
     public Long getId() {
         return id;
@@ -36,14 +41,6 @@ public class Price {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getBrandId() {
-        return brandId;
-    }
-
-    public void setBrandId(String brandId) {
-        this.brandId = brandId;
     }
 
     public LocalDateTime getStartDate() {
