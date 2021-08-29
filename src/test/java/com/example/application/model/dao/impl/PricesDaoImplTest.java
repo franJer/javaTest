@@ -7,8 +7,11 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import java.time.LocalDateTime;
+import java.time.Month;
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 
 @SpringBootTest
@@ -17,17 +20,70 @@ public class PricesDaoImplTest {
     private PricesDao pricesRepository;
 
     @Test
-    @DisplayName("Create User Test ")
-    void createUserTest() {
+    @DisplayName("Test find by product, brand and date returning two elements")
+    void findByProductBrandDateTestWithTwo() {
 
-        Price created = pricesRepository.save(getPrice());
+        LocalDateTime startDate = LocalDateTime.of(2021, Month.JULY, 29, 9, 30, 40);
+        LocalDateTime endDate = LocalDateTime.of(2021, Month.JULY, 29, 19, 30, 40);
+        LocalDateTime secondEndDate = LocalDateTime.of(2021, Month.JULY, 29, 17, 30, 40);
+        LocalDateTime searchDate = LocalDateTime.of(2021, Month.JULY, 29, 11, 30, 40);
 
-        assertNotNull(created);
-    }
+        String brandId = "ZARA";
+        int productId = 1;
 
-    private Price getPrice() {
 
         Price price = new Price();
-        return price.withBrandId("ZARA");
+        price.withBrandId(brandId).withProductId(productId).withStartDate(startDate).withEndDate(endDate).withPriotiy(1);
+
+        Price created = pricesRepository.save(price);
+        assertNotNull(created);
+
+        Price price2 = new Price();
+        price2.withBrandId(brandId).withProductId(productId).withStartDate(startDate).withEndDate(secondEndDate).withPriotiy(2);
+
+        created = pricesRepository.save(price2);
+        assertNotNull(created);
+
+        List<Price> priceListFiltered =
+                pricesRepository.findByProductIdAndBrandIdAndDate(productId, brandId, searchDate);
+
+        assertEquals(priceListFiltered.size(), 2);
+        assertEquals(priceListFiltered.get(0).getPriotiy(),2);
+
     }
+
+
+    @Test
+    @DisplayName("Test find by product, brand and date ")
+    void findByProductBrandDateTest() {
+
+        LocalDateTime startDate = LocalDateTime.of(2021, Month.JULY, 29, 9, 30, 40);
+        LocalDateTime endDate = LocalDateTime.of(2021, Month.JULY, 29, 19, 30, 40);
+        LocalDateTime searchDate = LocalDateTime.of(2021, Month.JULY, 29, 11, 30, 40);
+
+        String brandId = "ZARA";
+        String brandId2 = "BRAND";
+        int productId = 1;
+
+
+        Price price = new Price();
+        price.withBrandId(brandId).withProductId(productId).withStartDate(startDate).withEndDate(endDate);
+
+        Price created1 = pricesRepository.save(price);
+        assertNotNull(created1);
+
+        Price price2 = new Price();
+        price2.withBrandId(brandId2).withProductId(productId).withStartDate(startDate).withEndDate(endDate);
+
+        Price created = pricesRepository.save(price2);
+        assertNotNull(created);
+
+        List<Price> priceListFiltered =
+                pricesRepository.findByProductIdAndBrandIdAndDate(productId, brandId, searchDate);
+
+        assertEquals(priceListFiltered.size(),1);
+
+    }
+
+
 }

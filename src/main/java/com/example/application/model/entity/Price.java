@@ -14,9 +14,42 @@ public class Price {
     @GeneratedValue
     Long id;
     private String brandId;
+
+    public String getBrandId() {
+        return brandId;
+    }
+
+    public LocalDateTime getStartDate() {
+        return startDate;
+    }
+
+    public LocalDateTime getEndDate() {
+        return endDate;
+    }
+
+    public int getPriceList() {
+        return priceList;
+    }
+
+    public int getProductId() {
+        return productId;
+    }
+
+    public int getPriotiy() {
+        return priotiy;
+    }
+
+    public BigDecimal getPrice() {
+        return price;
+    }
+
+    public String getCurrency() {
+        return currency;
+    }
+
     private LocalDateTime startDate;
     private LocalDateTime endDate;
-    private int priceLis;
+    private int priceList;
     private int productId;
     private int priotiy;
     private BigDecimal price;
@@ -34,68 +67,38 @@ public class Price {
         return this;
     }
 
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public LocalDateTime getStartDate() {
-        return startDate;
-    }
-
-    public void setStartDate(LocalDateTime startDate) {
+    public Price withStartDate(LocalDateTime startDate){
         this.startDate = startDate;
+        return this;
     }
 
-    public LocalDateTime getEndDate() {
-        return endDate;
-    }
-
-    public void setEndDate(LocalDateTime endDate) {
+    public Price withEndDate(LocalDateTime endDate){
         this.endDate = endDate;
+        return this;
     }
 
-    public int getPriceLis() {
-        return priceLis;
+    public Price withPriceList(int priceList){
+        this.priceList = priceList;
+        return this;
     }
 
-    public void setPriceLis(int priceLis) {
-        this.priceLis = priceLis;
-    }
-
-    public int getProductId() {
-        return productId;
-    }
-
-    public void setProductId(int productId) {
+    public Price withProductId(int productId){
         this.productId = productId;
+        return this;
     }
 
-    public int getPriotiy() {
-        return priotiy;
-    }
-
-    public void setPriotiy(int priotiy) {
+    public Price withPriotiy(int priotiy){
         this.priotiy = priotiy;
+        return this;
     }
 
-    public BigDecimal getPrice() {
-        return price;
-    }
-
-    public void setPrice(BigDecimal price) {
+    public Price withPrice(BigDecimal price){
         this.price = price;
+        return this;
     }
 
-    public String getCurrency() {
-        return currency;
-    }
-
-    public void setCurrency(String currency) {
+    public Price withCurrency(String currency){
         this.currency = currency;
+        return this;
     }
 }
