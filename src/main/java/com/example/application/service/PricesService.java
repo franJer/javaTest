@@ -1,9 +1,11 @@
-package com.example.service;
+package com.example.application.service;
 
-import com.example.entity.PricesEntity;
+import com.example.application.model.entity.Price;
+import org.springframework.stereotype.Component;
 
 import java.util.Date;
 
+@Component
 public interface PricesService {
     /**
      * The purpose of this function is to return the price for a specific product, group
@@ -13,5 +15,5 @@ public interface PricesService {
      * @param date target date
      * @return PricesEntity
      */
-    PricesEntity getPricesByProductDateGroup(String productId, String groupId, Date date);
+    Price getPricesByProductDateGroup(String productId, String groupId, Date date);
 }

@@ -1,4 +1,4 @@
-package com.example.dto;
+package com.example.application.dto;
 
 public class FinalPriceDTO {
     public FinalPriceDTO(String productId) {

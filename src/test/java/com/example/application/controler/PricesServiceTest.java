@@ -1,7 +1,7 @@
 package com.example.application.controler;
 
 
-import com.example.service.PricesService;
+import com.example.application.service.PricesService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +14,7 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @ExtendWith(SpringExtension.class)
-@WebMvcTest(PricesService.class)
+@WebMvcTest(PricesServiceControler.class)
 public class PricesServiceTest {
     @Autowired
     MockMvc mockMvc;
