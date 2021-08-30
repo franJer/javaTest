@@ -31,7 +31,7 @@ public class PricesDaoImplTest {
         LocalDateTime secondEndDate = LocalDateTime.of(2021, Month.JULY, 29, 17, 30, 40);
         LocalDateTime searchDate = LocalDateTime.of(2021, Month.JULY, 29, 11, 30, 40);
 
-        String brandId = "ZARA";
+        int brandId = 1;
         int productId = 1;
 
 
@@ -62,8 +62,8 @@ public class PricesDaoImplTest {
         LocalDateTime endDate = LocalDateTime.of(2021, Month.JULY, 29, 19, 30, 40);
         LocalDateTime searchDate = LocalDateTime.of(2021, Month.JULY, 29, 11, 30, 40);
 
-        String brandId = "ZARA";
-        String brandId2 = "BRAND";
+        int brandId = 1;
+        int brandId2 = 2;
         int productId = 1;
 
 

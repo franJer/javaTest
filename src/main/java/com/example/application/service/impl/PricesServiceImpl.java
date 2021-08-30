@@ -15,7 +15,7 @@ public class PricesServiceImpl implements PricesService {
     @Autowired
     private PricesDao pricesRepository;
     @Override
-    public Optional<Price> getPricesByProductDateGroup(int productId, String groupId, LocalDateTime date) {
+    public Optional<Price> getPricesByProductDateGroup(int productId, int groupId, LocalDateTime date) {
         List<Price> priceListFiltered = pricesRepository.findByProductIdAndBrandIdAndDate(productId, groupId, date);
         return priceListFiltered.stream().findFirst();
     }

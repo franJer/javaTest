@@ -32,7 +32,7 @@ class PricesServiceImplTest {
     @InjectMocks
     private PricesServiceImpl pricesService;
 
-    private String brandId = "ZARA";
+    private int brandId = 1;
     private int productId = 1;
     private LocalDateTime searchDate = LocalDateTime.of(2021, Month.JULY, 29, 11, 30, 40);
 
@@ -51,7 +51,7 @@ class PricesServiceImplTest {
         listOfPrices.add(price);
         listOfPrices.add(price2);
 
-        Mockito.when(pricesDao.findByProductIdAndBrandIdAndDate(Mockito.anyInt(), Mockito.anyString(), Mockito.any())).thenReturn(listOfPrices);
+        Mockito.when(pricesDao.findByProductIdAndBrandIdAndDate(Mockito.anyInt(), Mockito.anyInt(), Mockito.any())).thenReturn(listOfPrices);
         Optional<Price> priceFiltered = pricesService.getPricesByProductDateGroup(productId, brandId, searchDate);
 
         assertTrue(priceFiltered.isPresent());
@@ -62,7 +62,7 @@ class PricesServiceImplTest {
     @DisplayName("Test find by product, brand and date with no elements")
     void findByProductBrandDateTestWithNoElement() {
         List<Price> listOfPrices = new ArrayList<>();
-        Mockito.when(pricesDao.findByProductIdAndBrandIdAndDate(Mockito.anyInt(), Mockito.anyString(), Mockito.any())).thenReturn(listOfPrices);
+        Mockito.when(pricesDao.findByProductIdAndBrandIdAndDate(Mockito.anyInt(), Mockito.anyInt(), Mockito.any())).thenReturn(listOfPrices);
         Optional<Price> priceFiltered = pricesService.getPricesByProductDateGroup(productId, brandId, searchDate);
         assertFalse(priceFiltered.isPresent());
     }
@@ -75,7 +75,7 @@ class PricesServiceImplTest {
         Price price = new Price().withBrandId(brandId).withProductId(productId).withStartDate(startDate).withEndDate(endDate).withPriotiy(1);
         List<Price> listOfPrices = new ArrayList<>();
         listOfPrices.add(price);
-        Mockito.when(pricesDao.findByProductIdAndBrandIdAndDate(Mockito.anyInt(), Mockito.anyString(), Mockito.any())).thenReturn(listOfPrices);
+        Mockito.when(pricesDao.findByProductIdAndBrandIdAndDate(Mockito.anyInt(), Mockito.anyInt(), Mockito.any())).thenReturn(listOfPrices);
         Optional<Price> priceFiltered = pricesService.getPricesByProductDateGroup(productId, brandId, searchDate);
 
         assertTrue(priceFiltered.isPresent());

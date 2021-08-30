@@ -16,7 +16,7 @@ public interface PricesService {
      * @param date target date
      * @return PricesEntity
      */
-    Optional<Price> getPricesByProductDateGroup(int productId, String groupId, LocalDateTime date);
+    Optional<Price> getPricesByProductDateGroup(int productId, int groupId, LocalDateTime date);
 
 
 }

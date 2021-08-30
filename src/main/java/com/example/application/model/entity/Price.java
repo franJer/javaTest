@@ -13,7 +13,7 @@ public class Price {
     @Id
     @GeneratedValue
     Long id;
-    private String brandId;
+    private int brandId;
     private LocalDateTime startDate;
     private LocalDateTime endDate;
     private int priceList;
@@ -22,7 +22,7 @@ public class Price {
     private BigDecimal price;
     private String currency;
 
-    public String getBrandId() {
+    public int getBrandId() {
         return brandId;
     }
 
@@ -59,11 +59,8 @@ public class Price {
     public Price(){
 
     }
-    public Price(Long id, String brand) {
-        this.id = id;
-        this.brandId = brand;
-    }
-    public Price withBrandId(String brandId){
+
+    public Price withBrandId(int brandId){
         this.brandId = brandId;
         return this;
     }
