@@ -34,14 +34,25 @@ public class PricesServiceControler {
             @RequestParam(value = "date") String date) {
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd-HH.mm.ss");
-        LocalDateTime dateTime = LocalDateTime.parse(date, formatter);
-        Optional<Price> price = pricesService.getPricesByProductDateGroup(Integer.parseInt(productId) , Integer.parseInt(brandId) , dateTime);
+        // Basic parameters validation
+        LocalDateTime dateTime;
+        int productIdentifier;
+        int brandIdentifier;
+
+        try {
+            productIdentifier = Integer.parseInt(productId);
+            brandIdentifier = Integer.parseInt(brandId);
+            dateTime = LocalDateTime.parse(date, formatter);
+        } catch (Exception e) {
+            throw new ResponseStatusException(HttpStatus.NOT_ACCEPTABLE, "Incorrect parameters");        }
+
+
+        Optional<Price> price = pricesService.getPricesByProductDateGroup(productIdentifier, brandIdentifier, dateTime);
 
         if (price.isPresent()) {
             return  PriceDTO.toDTO(price.get());
         } else {
-            throw new ResponseStatusException(
-                    HttpStatus.NOT_FOUND, "Price Not Found");
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Price Not Found");
         }
 
     }

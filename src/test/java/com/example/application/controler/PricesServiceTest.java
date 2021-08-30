@@ -119,4 +119,18 @@ public class PricesServiceTest {
                 .andReturn();
     }
 
+    @Test
+    @DisplayName("Test 7: Incorrect format date ")
+    public void getTest7() throws Exception {
+
+        MvcResult result = mockMvc.perform(MockMvcRequestBuilders
+                .get("/prices")
+                .contentType(MediaType.APPLICATION_JSON)
+                .param("productId", "35455")
+                .param("brandId", "2")
+                .param("date", "P-06-16-21.00.00"))
+                .andExpect(status().isNotAcceptable())
+                .andReturn();
+    }
+
 }
