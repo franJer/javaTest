@@ -1,9 +1,6 @@
 package com.example.application.model.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
@@ -11,14 +8,13 @@ import java.time.LocalDateTime;
 @Table(name="PRICES")
 public class Price {
     @Id
-    @GeneratedValue
-    Long id;
+    private int id;
     private int brandId;
     private LocalDateTime startDate;
     private LocalDateTime endDate;
     private int priceList;
     private int productId;
-    private int priotiy;
+    private int priority;
     private BigDecimal price;
     private String currency;
 
@@ -42,8 +38,8 @@ public class Price {
         return productId;
     }
 
-    public int getPriotiy() {
-        return priotiy;
+    public int getPriority() {
+        return priority;
     }
 
     public BigDecimal getPrice() {
@@ -58,6 +54,11 @@ public class Price {
 
     public Price(){
 
+    }
+
+    public Price withId(int id){
+        this.id = id;
+        return this;
     }
 
     public Price withBrandId(int brandId){
@@ -75,28 +76,15 @@ public class Price {
         return this;
     }
 
-    public Price withPriceList(int priceList){
-        this.priceList = priceList;
-        return this;
-    }
 
     public Price withProductId(int productId){
         this.productId = productId;
         return this;
     }
 
-    public Price withPriotiy(int priotiy){
-        this.priotiy = priotiy;
+    public Price withPrioritiy(int priority){
+        this.priority = priority;
         return this;
     }
 
-    public Price withPrice(BigDecimal price){
-        this.price = price;
-        return this;
-    }
-
-    public Price withCurrency(String currency){
-        this.currency = currency;
-        return this;
-    }
 }

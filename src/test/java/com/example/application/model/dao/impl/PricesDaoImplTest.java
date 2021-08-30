@@ -35,12 +35,12 @@ public class PricesDaoImplTest {
         int productId = 1;
 
 
-        Price price = new Price().withBrandId(brandId).withProductId(productId).withStartDate(startDate).withEndDate(endDate).withPriotiy(1);
+        Price price = new Price().withBrandId(brandId).withProductId(productId).withStartDate(startDate).withEndDate(endDate).withPrioritiy(1).withId(1);
 
         Price created = pricesRepository.save(price);
         assertNotNull(created);
 
-        Price price2 = new Price().withBrandId(brandId).withProductId(productId).withStartDate(startDate).withEndDate(secondEndDate).withPriotiy(2);
+        Price price2 = new Price().withBrandId(brandId).withProductId(productId).withStartDate(startDate).withEndDate(secondEndDate).withPrioritiy(2).withId(2);
 
         created = pricesRepository.save(price2);
         assertNotNull(created);
@@ -49,7 +49,7 @@ public class PricesDaoImplTest {
                 pricesRepository.findByProductIdAndBrandIdAndDate(productId, brandId, searchDate);
 
         assertEquals(priceListFiltered.size(), 2);
-        assertEquals(priceListFiltered.get(0).getPriotiy(),2);
+        assertEquals(priceListFiltered.get(0).getPriority(),2);
 
     }
 
@@ -67,12 +67,12 @@ public class PricesDaoImplTest {
         int productId = 1;
 
 
-        Price price = new Price().withBrandId(brandId).withProductId(productId).withStartDate(startDate).withEndDate(endDate);
+        Price price = new Price().withBrandId(brandId).withProductId(productId).withStartDate(startDate).withEndDate(endDate).withId(1);
 
         Price created1 = pricesRepository.save(price);
         assertNotNull(created1);
 
-        Price price2 = new Price().withBrandId(brandId2).withProductId(productId).withStartDate(startDate).withEndDate(endDate);
+        Price price2 = new Price().withBrandId(brandId2).withProductId(productId).withStartDate(startDate).withEndDate(endDate).withId(2);
 
         Price created = pricesRepository.save(price2);
         assertNotNull(created);
