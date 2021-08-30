@@ -45,8 +45,8 @@ class PricesServiceImplTest {
         LocalDateTime secondEndDate = LocalDateTime.of(2021, Month.JULY, 29, 17, 30, 40);
 
 
-        Price price = new Price().withBrandId(brandId).withProductId(productId).withStartDate(startDate).withEndDate(endDate).withPrioritiy(1);
-        Price price2 = new Price().withBrandId(brandId).withProductId(productId).withStartDate(startDate).withEndDate(secondEndDate).withPrioritiy(2);
+        Price price = new Price.Builder().withBrandId(brandId).withProductId(productId).withStartDate(startDate).withEndDate(endDate).withPrioritiy(1).build();
+        Price price2 = new Price.Builder().withBrandId(brandId).withProductId(productId).withStartDate(startDate).withEndDate(secondEndDate).withPrioritiy(2).build();
         List<Price> listOfPrices = new ArrayList<>();
         listOfPrices.add(price);
         listOfPrices.add(price2);
@@ -72,7 +72,7 @@ class PricesServiceImplTest {
     void findByProductBrandDateTestWithOneElement() {
         LocalDateTime startDate = LocalDateTime.of(2021, Month.JULY, 29, 9, 30, 40);
         LocalDateTime endDate = LocalDateTime.of(2021, Month.JULY, 29, 19, 30, 40);
-        Price price = new Price().withBrandId(brandId).withProductId(productId).withStartDate(startDate).withEndDate(endDate).withPrioritiy(1);
+        Price price = new Price.Builder().withBrandId(brandId).withProductId(productId).withStartDate(startDate).withEndDate(endDate).withPrioritiy(1).build();
         List<Price> listOfPrices = new ArrayList<>();
         listOfPrices.add(price);
         Mockito.when(pricesDao.findByProductIdAndBrandIdAndDate(Mockito.anyInt(), Mockito.anyInt(), Mockito.any())).thenReturn(listOfPrices);

@@ -50,41 +50,62 @@ public class Price {
         return currency;
     }
 
-
-
-    public Price(){
-
+    public Price() {
     }
 
-    public Price withId(int id){
-        this.id = id;
-        return this;
+    private Price(Builder builder){
+        this.id = builder.id;
+        this.brandId = builder.brandId;
+        this.startDate = builder.startDate;
+        this.endDate = builder.endDate;
+        this.productId = builder.productId;
+        this.priority = builder.priority;
+
+    }
+    public static class Builder {
+        private int id;
+        private int brandId;
+        private LocalDateTime startDate;
+        private LocalDateTime endDate;
+        private int productId;
+        private int priority;
+        public Builder() {
+        }
+        public Builder withId(int id){
+            this.id = id;
+            return this;
+        }
+
+        public Builder withBrandId(int brandId){
+            this.brandId = brandId;
+            return this;
+        }
+
+        public Builder withStartDate(LocalDateTime startDate){
+            this.startDate = startDate;
+            return this;
+        }
+
+        public Builder withEndDate(LocalDateTime endDate){
+            this.endDate = endDate;
+            return this;
+        }
+
+
+        public Builder withProductId(int productId){
+            this.productId = productId;
+            return this;
+        }
+
+        public Builder withPrioritiy(int priority){
+            this.priority = priority;
+            return this;
+        }
+        public Price build() {
+            return new Price(this);
+        }
     }
 
-    public Price withBrandId(int brandId){
-        this.brandId = brandId;
-        return this;
-    }
 
-    public Price withStartDate(LocalDateTime startDate){
-        this.startDate = startDate;
-        return this;
-    }
-
-    public Price withEndDate(LocalDateTime endDate){
-        this.endDate = endDate;
-        return this;
-    }
-
-
-    public Price withProductId(int productId){
-        this.productId = productId;
-        return this;
-    }
-
-    public Price withPrioritiy(int priority){
-        this.priority = priority;
-        return this;
-    }
 
 }
