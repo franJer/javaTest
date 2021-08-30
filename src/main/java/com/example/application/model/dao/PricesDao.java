@@ -12,5 +12,6 @@ import java.util.List;
 public interface PricesDao extends JpaRepository<Price, Long>   {
     @Query("select p from Price p where p.startDate <=:startDate and p.endDate >=: startDate and p.productId =:productId and p.brandId=:brandId order by p.priotiy desc")
     List<Price> findByProductIdAndBrandIdAndDate(int productId, String brandId, LocalDateTime startDate);
+
 }
 

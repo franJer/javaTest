@@ -14,6 +14,13 @@ public class Price {
     @GeneratedValue
     Long id;
     private String brandId;
+    private LocalDateTime startDate;
+    private LocalDateTime endDate;
+    private int priceList;
+    private int productId;
+    private int priotiy;
+    private BigDecimal price;
+    private String currency;
 
     public String getBrandId() {
         return brandId;
@@ -47,13 +54,7 @@ public class Price {
         return currency;
     }
 
-    private LocalDateTime startDate;
-    private LocalDateTime endDate;
-    private int priceList;
-    private int productId;
-    private int priotiy;
-    private BigDecimal price;
-    private String currency;
+
 
     public Price(){
 
