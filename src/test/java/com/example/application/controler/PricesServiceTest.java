@@ -23,7 +23,7 @@ public class PricesServiceTest {
     @Test
     @DisplayName("Test 1: petición a las 10:00 del día 14 del producto 35455 para la brand 1 (ZARA) ")
     public void getTest1() throws Exception {
-        String spectedResult = "{\"productId\":\"35455\",\"brandId\":\"1\",\"price\":\"35.50\",\"startDate\":\"2020-06-14T00:00\",\"endDate\":\"2020-12-31T23:59:59\"}";
+        String spectedResult = "{\"productId\":\"35455\",\"brandId\":\"1\",\"price\":\"35.50\",\"startDate\":\"2020-06-14-00.00.00\",\"endDate\":\"2020-12-31-23.59.59\"}";
 
         MvcResult result = mockMvc.perform(MockMvcRequestBuilders
                         .get("/prices")
@@ -40,7 +40,7 @@ public class PricesServiceTest {
     @Test
     @DisplayName("Test 2: petición a las 16:00 del día 14 del producto 35455   para la brand 1 (ZARA) ")
     public void getTest2() throws Exception {
-        String spectedResult = "{\"productId\":\"35455\",\"brandId\":\"1\",\"price\":\"25.45\",\"startDate\":\"2020-06-14T15:00\",\"endDate\":\"2020-06-14T18:30\"}";
+        String spectedResult = "{\"productId\":\"35455\",\"brandId\":\"1\",\"price\":\"25.45\",\"startDate\":\"2020-06-14-15.00.00\",\"endDate\":\"2020-06-14-18.30.00\"}";
 
         MvcResult result = mockMvc.perform(MockMvcRequestBuilders
                 .get("/prices")
@@ -58,7 +58,7 @@ public class PricesServiceTest {
     @Test
     @DisplayName("Test 3: petición a las 21:00 del día 14 del producto 35455   para la brand 1 (ZARA) ")
     public void getTest3() throws Exception {
-        String spectedResult = "{\"productId\":\"35455\",\"brandId\":\"1\",\"price\":\"35.50\",\"startDate\":\"2020-06-14T00:00\",\"endDate\":\"2020-12-31T23:59:59\"}";
+        String spectedResult = "{\"productId\":\"35455\",\"brandId\":\"1\",\"price\":\"35.50\",\"startDate\":\"2020-06-14-00.00.00\",\"endDate\":\"2020-12-31-23.59.59\"}";
 
         MvcResult result = mockMvc.perform(MockMvcRequestBuilders
                 .get("/prices")
@@ -76,7 +76,7 @@ public class PricesServiceTest {
     @Test
     @DisplayName("Test 4: petición a las 10:00 del día 15 del producto 35455   para la brand 1 (ZARA) ")
     public void getTest4() throws Exception {
-        String spectedResult = "{\"productId\":\"35455\",\"brandId\":\"1\",\"price\":\"30.50\",\"startDate\":\"2020-06-15T00:00\",\"endDate\":\"2020-06-15T11:00\"}";
+        String spectedResult = "{\"productId\":\"35455\",\"brandId\":\"1\",\"price\":\"30.50\",\"startDate\":\"2020-06-15-00.00.00\",\"endDate\":\"2020-06-15-11.00.00\"}";
 
         MvcResult result = mockMvc.perform(MockMvcRequestBuilders
                 .get("/prices")
@@ -94,7 +94,7 @@ public class PricesServiceTest {
     @Test
     @DisplayName("Test 5: petición a las 21:00 del día 16 del producto 35455   para la brand 1 (ZARA) ")
     public void getTest5() throws Exception {
-        String spectedResult = "{\"productId\":\"35455\",\"brandId\":\"1\",\"price\":\"38.95\",\"startDate\":\"2020-06-15T16:00\",\"endDate\":\"2020-12-31T23:59:59\"}";
+        String spectedResult = "{\"productId\":\"35455\",\"brandId\":\"1\",\"price\":\"38.95\",\"startDate\":\"2020-06-15-16.00.00\",\"endDate\":\"2020-12-31-23.59.59\"}";
 
         MvcResult result = mockMvc.perform(MockMvcRequestBuilders
                 .get("/prices")
