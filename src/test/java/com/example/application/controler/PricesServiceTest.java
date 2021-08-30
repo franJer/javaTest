@@ -51,7 +51,6 @@ public class PricesServiceTest {
                 .andExpect(status().isOk())
                 .andReturn();
         String content = result.getResponse().getContentAsString();
-        System.out.println(content);
         assertEquals(content, spectedResult);
     }
 
@@ -69,7 +68,6 @@ public class PricesServiceTest {
                 .andExpect(status().isOk())
                 .andReturn();
         String content = result.getResponse().getContentAsString();
-        System.out.println(content);
         assertEquals(content, spectedResult);
     }
 
@@ -87,7 +85,6 @@ public class PricesServiceTest {
                 .andExpect(status().isOk())
                 .andReturn();
         String content = result.getResponse().getContentAsString();
-        System.out.println(content);
         assertEquals(content, spectedResult);
     }
 
@@ -105,8 +102,21 @@ public class PricesServiceTest {
                 .andExpect(status().isOk())
                 .andReturn();
         String content = result.getResponse().getContentAsString();
-        System.out.println(content);
         assertEquals(content, spectedResult);
+    }
+
+    @Test
+    @DisplayName("Test 6: Price not found ")
+    public void getTest6() throws Exception {
+
+        MvcResult result = mockMvc.perform(MockMvcRequestBuilders
+                .get("/prices")
+                .contentType(MediaType.APPLICATION_JSON)
+                .param("productId", "35455")
+                .param("brandId", "2")
+                .param("date", "2020-06-16-21.00.00"))
+                .andExpect(status().isNotFound())
+                .andReturn();
     }
 
 }
