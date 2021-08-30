@@ -3,12 +3,11 @@ package com.example.application.dto;
 
 import com.example.application.model.entity.Price;
 
-import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-public class FinalPriceDTO {
+public class PriceDTO {
 
-    public FinalPriceDTO() {
+    public PriceDTO() {
     }
 
     private static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd-HH.mm.ss");
@@ -42,8 +41,8 @@ public class FinalPriceDTO {
 
 
 
-    public static FinalPriceDTO toDTO(Price price) {
-        FinalPriceDTO finalPriceDTO = new FinalPriceDTO();
+    public static PriceDTO toDTO(Price price) {
+        PriceDTO finalPriceDTO = new PriceDTO();
         finalPriceDTO.productId = String.valueOf(price.getProductId());
         finalPriceDTO.brandId = String.valueOf(price.getBrandId());
         finalPriceDTO.price = String.valueOf(price.getPrice());

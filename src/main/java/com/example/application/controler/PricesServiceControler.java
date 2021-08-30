@@ -1,11 +1,10 @@
 package com.example.application.controler;
 
-import com.example.application.dto.FinalPriceDTO;
+import com.example.application.dto.PriceDTO;
 import com.example.application.model.entity.Price;
 import com.example.application.service.PricesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
@@ -21,8 +20,15 @@ public class PricesServiceControler {
     @Autowired
     private PricesService pricesService;
 
+    /**
+     * Rest service to provide the final price to be applied for a product brand and date
+     * @param productId product ID
+     * @param brandId brand Id
+     * @param date date
+     * @return final Price
+     */
     @RequestMapping(value = "/prices", method = RequestMethod.GET)
-    public FinalPriceDTO getByProductByBrandAndDate(
+    public PriceDTO getByProductByBrandAndDate(
             @RequestParam(value = "productId") String productId,
             @RequestParam(value = "brandId") String brandId,
             @RequestParam(value = "date") String date) {
@@ -32,7 +38,7 @@ public class PricesServiceControler {
         Optional<Price> price = pricesService.getPricesByProductDateGroup(Integer.parseInt(productId) , Integer.parseInt(brandId) , dateTime);
 
         if (price.isPresent()) {
-            return  FinalPriceDTO.toDTO(price.get());
+            return  PriceDTO.toDTO(price.get());
         } else {
             throw new ResponseStatusException(
                     HttpStatus.NOT_FOUND, "Price Not Found");
