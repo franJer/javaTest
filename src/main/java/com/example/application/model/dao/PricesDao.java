@@ -17,7 +17,7 @@ public interface PricesDao extends JpaRepository<Price, Long>   {
      * @param targetDate taget date to get the price
      * @return list of prices
      */
-    @Query("select p from Price p where :targetDate >= p.startDate and :targetDate <= p.endDate and p.productId =:productId and p.brandId=:brandId order by p.priority desc")
+    @Query("select p from Price p where :targetDate between p.startDate and p.endDate and p.productId =:productId and p.brandId=:brandId order by p.priority desc")
     List<Price> findByProductIdAndBrandIdAndDate(int productId, int brandId, LocalDateTime targetDate);
 
 
